@@ -1,0 +1,320 @@
+<!-- <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lua de Sangue</title>
+    <link rel="stylesheet" href="fichas.css">
+</head>
+
+<body>
+<header class="cabeçalho">
+        <img class="cabeçalho-img"  src="img/logo.jpg" width="50px" height="50px" border-radius="50%" object-fit="cover">
+        <nav class="cabeçalho-menu">
+            <a class="cabeçalho-item" href="inicio.html">Início</a>
+            <a class="cabeçalho-item" href="inicio.html">Início</a>
+            <a class="cabeçalho-item" href="classes.html">Classes</a>
+            <a class="cabeçalho-item" href="sub-classes.html">Sub-Classes</a>
+            <a class="cabeçalho-item" href="fichas.html">fichas</a>
+            <a class="cabeçalho-item" href="dados.html">Dados</a>
+            <a class="cabeçalho-item" href="raças.html">Raças</a>
+        </nav>
+    </header>
+
+
+<main>
+    <h1>Fichas</h1>
+
+    <div class="container">
+    -->
+        <!-- Informações -->
+      <!--  <div class="section">
+            <h2>Informações</h2>
+            <input id="nome" placeholder="Nome">
+            <input id="classe" placeholder="Classe">
+            <input id="subclasse" placeholder="Subclasse">
+            <input id="nivel" placeholder="Nível">
+            <input id="raca" placeholder="Raça">
+        </div>
+        -->
+        <!-- Atributos -->
+     <!--  <div class="section">
+            <h2>Atributos</h2>
+            <div class="grid">
+                <input id="vida" placeholder="Vida">
+                <input id="intelecto" placeholder="Intelecto">
+                <input id="forca" placeholder="Força">
+                <input id="agilidade" placeholder="Agilidade">
+                <input id="mana" placeholder="Mana">
+                <input id="defesa" placeholder="Defesa">
+                <input id="esquiva" placeholder="Esquiva">
+                <input id="sanidade" placeholder="Sanidade">
+            </div>
+        </div> -->
+
+        <!-- Perícias -->
+      <!--  <div class="section">
+            <h2>Perícias</h2>
+            <div class="grid">
+                <input id="luta" placeholder="Luta">
+                <input id="pontaria" placeholder="Pontaria">
+                <input id="reflexos" placeholder="Reflexos">
+                <input id="intuicao" placeholder="Intuição">
+                <input id="intimidacao" placeholder="Intimidação">
+                <input id="vontade" placeholder="Vontade">
+                <input id="acrobacia" placeholder="Acrobacia">
+                <input id="percepcao" placeholder="Percepção">
+                <input id="furtividade" placeholder="Furtividade">
+                <input id="crime" placeholder="Crime">
+                <input id="construcao" placeholder="Construção">
+                <input id="cozinhar" placeholder="Cozinhar">
+                <input id="tocar" placeholder="Tocar">
+            </div>
+        </div> -->
+
+        <!-- Habilidades -->
+     <!--   <div class="section">
+            <h2>Habilidades</h2>
+            <textarea id="habilidades"></textarea>
+        </div>
+
+        <button onclick="salvar()">Salvar Ficha</button>
+
+    </div>
+</main>
+
+<footer class="rodape">
+        <img class="rodape-img" src="img/rodape.png" >
+    </footer>
+<script src="fichas.js"></script>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lua de Sangue - Fichas</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "MedievalSharp", cursive;
+    background: url("img/🥀💀.jpg") no-repeat center/cover fixed;
+    color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+}
+
+.logo {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+nav {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 10px;
+    background: #340e0e;
+    color: white;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background: #9c1818;
+}
+
+/* MAIN */
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: "Cinzel Decorative", serif;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: rgba(85, 0, 0, 0.85);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.section h2 {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #fff;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    font-family: inherit;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+}
+
+textarea {
+    resize: none;
+    height: 120px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #9c1818;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #340e0e;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: rgba(0,0,0,0.6);
+}
+
+footer img {
+    width: 150px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="img/logo.jpg" class="logo">
+    <nav>
+        <a href="inicio.html">Início</a>
+        <a href="classes.html">Classes</a>
+        <a href="sub-classes.html">Sub-Classes</a>
+        <a href="fichas.html">Fichas</a>
+        <a href="dados.html">Dados</a>
+        <a href="racas.html">Raças</a>
+    </nav>
+</header>
+
+<main>
+    <h1>Ficha de Personagem</h1>
+
+    <div class="container">
+
+        <div class="section">
+            <h2>Informações</h2>
+            <input placeholder="Nome">
+            <input placeholder="Classe">
+            <input placeholder="Subclasse">
+            <input type="number" placeholder="Nível">
+            <input placeholder="Raça">
+        </div>
+
+        <div class="section">
+            <h2>Atributos</h2>
+            <div class="grid">
+                <input placeholder="Vida">
+                <input placeholder="Intelecto">
+                <input placeholder="Força">
+                <input placeholder="Agilidade">
+                <input placeholder="Mana">
+                <input placeholder="Defesa">
+                <input placeholder="Esquiva">
+                <input placeholder="Sanidade">
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Perícias</h2>
+            <div class="grid">
+                <input placeholder="Luta">
+                <input placeholder="Pontaria">
+                <input placeholder="Reflexos">
+                <input placeholder="Intuição">
+                <input placeholder="Intimidação">
+                <input placeholder="Vontade">
+                <input placeholder="Acrobacia">
+                <input placeholder="Percepção">
+                <input placeholder="Furtividade">
+                <input placeholder="Crime">
+                <input placeholder="Construção">
+                <input placeholder="Cozinhar">
+                <input placeholder="Tocar">
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Habilidades</h2>
+            <textarea placeholder="Descreva habilidades..."></textarea>
+        </div>
+
+        <button>Salvar Ficha</button>
+
+    </div>
+</main>
+
+<footer>
+    <img src="img/rodape.png">
+</footer>
+
+</body>
+</html>

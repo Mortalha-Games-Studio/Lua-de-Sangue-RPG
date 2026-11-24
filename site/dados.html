@@ -1,0 +1,627 @@
+<!--<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="dados.css">
+    <title>Lua De Sangue</title>s
+</head>
+
+<body>
+
+    <header class="cabeçalho">
+        <img class="cabeçalho-img"  src="img/logo.jpg" width="50px" height="50px" border-radius="50%" object-fit="cover">
+        <nav class="cabeçalho-menu">
+            <a class="cabeçalho-item" href="inicio.html">Início</a>
+            <a class="cabeçalho-item" href="classes.html">Classes</a>
+            <a class="cabeçalho-item" href="sub-classes.html">Sub-Classes</a>
+            <a class="cabeçalho-item" href="fichas.html">fichas</a>
+            <a class="cabeçalho-item" href="dados.html">Dados</a>
+            <a class="cabeçalho-item" href="raças.html">Raças</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Rolagem de Dados</h1>
+
+        <div class="container-dados">
+
+            <div class="dado" onclick="rolarDado(4, this)">
+                <img src="img/d4.jpeg">
+                <p>D4: <span>-</span></p>
+            </div>
+
+            <div class="dado" onclick="rolarDado(6, this)">
+                <img src="img/d6.jpeg">
+                <p>D6: <span>-</span></p>
+            </div>
+
+            <div class="dado" onclick="rolarDado(8, this)">
+                <img src="img/d8.jpeg">
+                <p>D8: <span>-</span></p>
+            </div>
+
+            <div class="dado" onclick="rolarDado(10, this)">
+                <img src="img/d10.jpeg">
+                <p>D10: <span>-</span></p>
+            </div>
+
+            <div class="dado" onclick="rolarDado(12, this)">
+                <img src="img/d12.jpeg">
+                <p>D12: <span>-</span></p>
+            </div>
+
+            <div class="dado" onclick="rolarDado(20, this)">
+                <img src="img/d20.jpg">
+                <p>D20: <span>-</span></p>
+            </div>
+
+            <div class="dado" onclick="rolarDado(100, this)">
+                <img src="img/d100.jpeg">
+                <p>D100: <span>-</span></p>
+            </div>
+        </div>
+        <br>
+
+
+        <div class="conteiner">
+            <button onclick="rolartodos()">Rolar Tudo</button>
+            <button onclick="limpardados()">Limpar</button>
+            <h2>Total: <span id="resultado-total">0</span></h2>
+        </div>
+    </main>
+
+
+  <footer class="rodape">
+        <img class="rodape-img" src="img/rodape.png" >
+  </footer>
+
+
+  <script src="dados.js"></script>
+    
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lua de Sangue - Dados</title>
+
+<link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "MedievalSharp", cursive;
+    background: url("img/fundo.dados.jpg") no-repeat center/cover fixed;
+    color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: rgba(0,0,0,0.5);
+}
+
+header img {
+    width: 50px;
+    border-radius: 50%;
+}
+
+nav {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    padding: 6px 12px;
+    background: rgb(52,14,14);
+    color: white;
+    border-radius: 10px;
+}
+
+/* MAIN */
+main {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 30px;
+}
+
+/* DADOS */
+.container-dados {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.dado {
+    background: rgb(94, 2, 2);
+    padding: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 120px;
+}
+
+.dado:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px red;
+}
+
+.dado img {
+    width: 70px;
+    height: 70px;
+    border-radius: 15px;
+}
+
+/* INPUT quantidade */
+.qtd {
+    width: 50px;
+    margin-top: 5px;
+}
+
+/* animação */
+.rolando {
+    animation: girar 0.5s;
+}
+
+@keyframes girar {
+    from { transform: rotate(0); }
+    to { transform: rotate(360deg); }
+}
+
+/* CONTROLES */
+.controles {
+    margin-top: 20px;
+    background: rgba(83,0,0,0.8);
+    padding: 15px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+button {
+    margin: 5px;
+    padding: 8px 12px;
+    background: rgb(52,14,14);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: rgb(120,20,20);
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="img/logo.jpg">
+    <nav>
+        <a href="inicio.html">Início</a>
+        <a href="classes.html">Classes</a>
+        <a href="sub-classes.html">Sub-Classes</a>
+        <a href="fichas.html">Fichas</a>
+        <a href="dados.html">Dados</a>
+        <a href="racas.html">Raças</a>
+    </nav>
+</header>
+
+<main>
+<h1>Rolagem de Dados</h1>
+
+<div class="container-dados">
+
+     MODELO DE DADO 
+    <div class="dado" data-lados="20">
+        <img src="img/d20.jpg">
+        <p>D20: <span class="resultado">-</span></p>
+        <input class="qtd" type="number" value="1" min="1">
+    </div>
+
+    <div class="dado" data-lados="6">
+        <img src="img/d6.jpeg">
+        <p>D6: <span class="resultado">-</span></p>
+        <input class="qtd" type="number" value="1" min="1">
+    </div>
+
+    <div class="dado" data-lados="12">
+        <img src="img/d12.jpeg">
+        <p>D12: <span class="resultado">-</span></p>
+        <input class="qtd" type="number" value="1" min="1">
+    </div>
+
+</div>
+
+<div class="controles">
+    <button onclick="rolarTudo()">Rolar Tudo</button>
+    <button onclick="limpar()">Limpar</button>
+
+    <br><br>
+
+    <button onclick="modificar(1)">+1</button>
+    <button onclick="modificar(5)">+5</button>
+    <button onclick="modificar(-1)">-1</button>
+
+    <p>Modificador: <span id="mod">+0</span></p>
+
+    <h2>Total: <span id="total">0</span></h2>
+</div>
+
+</main>
+
+<footer>
+    <img src="img/rodape.png" width="120">
+</footer>
+
+<script>
+let modificador = 0;
+
+// gerar resultado
+function rolar(lados, quantidade) {
+    let valores = [];
+    let soma = 0;
+
+    for (let i = 0; i < quantidade; i++) {
+        let v = Math.floor(Math.random() * lados) + 1;
+        valores.push(v);
+        soma += v;
+    }
+
+    return { valores, soma };
+}
+
+// rolar tudo
+function rolarTudo() {
+    let total = 0;
+
+    document.querySelectorAll(".dado").forEach(dado => {
+        let lados = parseInt(dado.dataset.lados);
+        let qtd = parseInt(dado.querySelector(".qtd").value);
+        let img = dado.querySelector("img");
+        let span = dado.querySelector(".resultado");
+
+        img.classList.add("rolando");
+
+        setTimeout(() => {
+            img.classList.remove("rolando");
+
+            let r = rolar(lados, qtd);
+
+            span.innerText = r.valores.join(", ");
+            total += r.soma;
+
+            document.getElementById("total").innerText = total + modificador;
+        }, 500);
+    });
+}
+
+// limpar
+function limpar() {
+    document.querySelectorAll(".resultado").forEach(e => e.innerText = "-");
+    document.getElementById("total").innerText = 0;
+    modificador = 0;
+    document.getElementById("mod").innerText = "+0";
+}
+
+// modificar
+function modificar(v) {
+    modificador += v;
+    document.getElementById("mod").innerText = modificador >= 0 ? "+" + modificador : modificador;
+}
+</script>
+
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lua De Sangue</title>
+
+<link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+    background: url("img/fundo.dados.jpg") no-repeat center/cover fixed;
+    font-family: "MedievalSharp", cursive;
+    color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.cabeçalho{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 24px;
+}
+
+.cabeçalho-img{
+    height: 52px;
+    border-radius: 40px;
+}
+
+.cabeçalho-menu{
+    display: flex;
+    gap: 32px;
+}
+
+.cabeçalho-item{
+    font-family: "MedievalSharp", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+    background-color: rgb(52, 14, 14);
+    color: whitesmoke;
+    border-radius: 15px;
+    padding: 6px;
+    text-decoration: none;
+}
+
+
+main { text-align:center; padding:20px; flex:1; }
+
+.container-dados {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+}
+
+.dado {
+    background:rgb(94,2,2);
+    padding:15px;
+    border-radius:15px;
+    cursor:pointer;
+    transition:0.3s;
+    width:130px;
+}
+
+.dado:hover { transform:scale(1.1); box-shadow:0 0 20px red; }
+
+.dado.ativo { box-shadow:0 0 20px gold; }
+
+.dado img {
+    width:75px;
+    height:75px;
+    border-radius:15px;
+}
+
+.qtd {
+    width:50px;
+    margin-top:5px;
+}
+
+.rolando { animation:girar 0.5s; }
+
+@keyframes girar {
+    from { transform:rotate(0); }
+    to { transform:rotate(360deg); }
+}
+
+.conteiner {
+    margin-top:20px;
+    background:rgb(83,0,0);
+    padding:15px;
+    border-radius:10px;
+    display:inline-block;
+}
+
+button {
+    margin:5px;
+    padding:5px;
+    background:rgb(52,14,14);
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover { background:rgb(120,20,20); }
+
+footer {
+    margin-top:auto;
+    text-align:center;
+    padding:10px;
+}
+</style>
+</head>
+
+<body>
+
+<header class="cabeçalho">
+<img class="cabeçalho-img" src="img/logo.jpg">
+<nav class="cabeçalho-menu">
+<a class="cabeçalho-item" href="inicio.html">Início</a>
+<a class="cabeçalho-item" href="classes.html">Classes</a>
+<a class="cabeçalho-item" href="sub-classes.html">Sub-Classes</a>
+<a class="cabeçalho-item" href="fichas.html">Fichas</a>
+<a class="cabeçalho-item" href="dados.html">Dados</a>
+<a class="cabeçalho-item" href="raças.html">Raças</a>
+</nav>
+</header>
+
+<main>
+
+<h1>Rolagem de Dados</h1>
+
+<div class="container-dados">
+
+<!-- DADOS -->
+<div class="dado" onclick="toggleDado(4,this)">
+<img src="img/d4.jpeg">
+<p>D4: <span class="resultado">-</span></p>
+<input class="qtd" type="number" value="1" min="1">
+</div>
+
+<div class="dado" onclick="toggleDado(6,this)">
+<img src="img/d6.jpeg">
+<p>D6: <span class="resultado">-</span></p>
+<input class="qtd" type="number" value="1" min="1">
+</div>
+
+<div class="dado" onclick="toggleDado(8,this)">
+<img src="img/d8.jpeg">
+<p>D8: <span class="resultado">-</span></p>
+<input class="qtd" type="number" value="1" min="1">
+</div>
+
+<div class="dado" onclick="toggleDado(10,this)">
+<img src="img/d10.jpeg">
+<p>D10: <span class="resultado">-</span></p>
+<input class="qtd" type="number" value="1" min="1">
+</div>
+
+<div class="dado" onclick="toggleDado(12,this)">
+<img src="img/d12.jpeg">
+<p>D12: <span class="resultado">-</span></p>
+<input class="qtd" type="number" value="1" min="1">
+</div>
+
+<div class="dado" onclick="toggleDado(20,this)">
+<img src="img/d20.jpg">
+<p>D20: <span class="resultado">-</span></p>
+<input class="qtd" type="number" value="1" min="1">
+</div>
+
+<div class="dado" onclick="toggleDado(100,this)">
+<img src="img/d100.jpeg">
+<p>D100: <span class="resultado">-</span></p>
+<input class="qtd" type="number" value="1" min="1">
+</div>
+
+</div>
+
+<br>
+
+<div class="conteiner">
+
+<button onclick="rolarTodos()">Rolar Selecionados</button>
+<button onclick="limpar()">Limpar</button>
+
+<br><br>
+
+<button onclick="modificar(1)">+1</button>
+<button onclick="modificar(5)">+5</button>
+<button onclick="modificar(-1)">-1</button>
+
+<p>Modificador: <span id="mod">+0</span></p>
+
+<h2>Total: <span id="resultado-total">0</span></h2>
+
+</div>
+
+</main>
+
+<footer>
+<img src="img/rodape.png" width="120">
+</footer>
+
+<script>
+let dadosSelecionados = [];
+let modificador = 0;
+
+// selecionar/desmarcar
+function toggleDado(lados, elemento) {
+    let index = dadosSelecionados.findIndex(d => d.elemento === elemento);
+
+    if (index !== -1) {
+        dadosSelecionados.splice(index, 1);
+        elemento.classList.remove("ativo");
+    } else {
+        dadosSelecionados.push({ lados, elemento });
+        elemento.classList.add("ativo");
+    }
+}
+
+// rolar dados
+function rolarTodos() {
+    let total = 0;
+
+    dadosSelecionados.forEach(dado => {
+        let img = dado.elemento.querySelector("img");
+        let span = dado.elemento.querySelector(".resultado");
+        let qtd = parseInt(dado.elemento.querySelector(".qtd").value);
+
+        img.classList.add("rolando");
+
+        setTimeout(() => {
+            img.classList.remove("rolando");
+
+            let valores = [];
+            let soma = 0;
+
+            for (let i = 0; i < qtd; i++) {
+                let v = Math.floor(Math.random() * dado.lados) + 1;
+                valores.push(v);
+                soma += v;
+            }
+
+            span.innerText = valores.join(", ");
+
+            total += soma + modificador;
+
+            document.getElementById("resultado-total").innerText = total;
+        }, 500);
+    });
+}
+
+// modificar
+function modificar(v) {
+    modificador += v;
+    document.getElementById("mod").innerText = modificador >= 0 ? "+" + modificador : modificador;
+}
+
+// limpar
+function limpar() {
+    dadosSelecionados = [];
+    modificador = 0;
+
+    document.querySelectorAll(".dado").forEach(d => {
+        d.classList.remove("ativo");
+        d.querySelector(".resultado").innerText = "-";
+    });
+
+    document.getElementById("resultado-total").innerText = 0;
+    document.getElementById("mod").innerText = "+0";
+}
+</script>
+
+</body>
+</html>
